@@ -54,7 +54,7 @@ let provider = new ethers.providers.InfuraProvider('mainnet', infuraProjectId);
 
 // Load the wallet to deploy the contract with
 let wallet = ethers.Wallet.fromMnemonic(mnemonic.toString()).connect(provider);
-var contract = new ethers.Contract('0x5274ABe031ECEB2dA4DF8E106eEeCEb044681485', abi, wallet);
+var contract = new ethers.Contract('0xdf6d916f89936d67543998e03db40d79870be41e', abi, wallet);
 
 if(!ethereumHelper.is_address(to)) {
     console.log(`To: ${to} is an invalid ethereum address`);
