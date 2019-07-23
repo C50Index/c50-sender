@@ -111,7 +111,7 @@ try {
 	console.log("File is valid, continuing...");
 
 	let expectedPrompt = `send ${totalToSend} C50 to ${numAddresses} people`;
-	let answer = await askQuestion(`You are about to ${expectedPrompt}\nAre you sure you want to continue? Please type "${expectedPrompt}" if you want to continue?\n`);
+	let answer = await askQuestion(`You are about to ${expectedPrompt}\nWith a gas price of ${gasPrice} gwei\nAre you sure you want to continue? Please type "${expectedPrompt}" if you want to continue.\n`);
 	if(answer === expectedPrompt) {
 		console.log("Sending c50");
 		loopThroughRows(csv, (address, amount, i) => {

@@ -22,10 +22,10 @@ if(!(to && amount)) {
 }
 
 const contractPath = path.resolve(__dirname, 'contracts', 'C50.json'); //Creation of cross SO's path.
-const mnemonicPath = path.resolve(__dirname, '.mnemonic');
+const mnemonicPath = path.resolve(__dirname, 'mnemonic.txt');
 
 if (!fs.existsSync(mnemonicPath)) {
-    console.log(`A .mnemonic file is required in the same directory containing the wallet mnemonic of the sender`);
+    console.log(`A mnemonic.txt file is required in the same directory containing the wallet mnemonic of the sender`);
     console.log(USAGE);
     return;
 }
@@ -48,9 +48,9 @@ if(!infuraProjectId) {
 
 
 // Connect to the network
-let provider = new ethers.providers.JsonRpcProvider('http://localhost:7545');
+// let provider = new ethers.providers.JsonRpcProvider('http://localhost:7545');
 
-// let provider = new ethers.providers.InfuraProvider('mainnet', infuraProjectId);
+let provider = new ethers.providers.InfuraProvider('mainnet', infuraProjectId);
 
 // Load the wallet to deploy the contract with
 let wallet = ethers.Wallet.fromMnemonic(mnemonic.toString()).connect(provider);
@@ -109,5 +109,5 @@ if(gasPrice) {
     balance = await contract.balanceOf(to);
     // console.log("to balance: ", Number(ethers.utils.formatEther(balance, {commify: true})).toLocaleString());
     console.log(`Sent ${amountString} C50 to ${to}, your balance=${Number(ethers.utils.formatEther(fromBalance, {commify: true})).toLocaleString()} C50`);
-    
+
 })();
