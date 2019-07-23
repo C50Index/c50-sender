@@ -90,10 +90,10 @@ if(gasPrice) {
 
     let from = wallet.address;
     let balance = await contract.balanceOf(from);
-    console.log("from balance: ", Number(ethers.utils.formatEther(balance, {commify: true})).toLocaleString());
+    // console.log("from balance: ", Number(ethers.utils.formatEther(balance, {commify: true})).toLocaleString());
 
     balance = await contract.balanceOf(to);
-    console.log("to balance: ", Number(ethers.utils.formatEther(balance, {commify: true})).toLocaleString());
+    // console.log("to balance: ", Number(ethers.utils.formatEther(balance, {commify: true})).toLocaleString());
 
     var amountString = String(amount);
     var numberOfDecimals = 18;
@@ -102,11 +102,12 @@ if(gasPrice) {
     gasPrice: ethers.utils.parseUnits(String(gasPrice), 'gwei'),
     };
     let transaction = await contract.transfer(to, numberOfTokens, options);
-    console.log("transaction", transaction);
-    balance = await contract.balanceOf(from);
-    console.log("from balance: ", Number(ethers.utils.formatEther(balance, {commify: true})).toLocaleString());
+    // console.log("transaction", transaction);
+    let fromBalance = await contract.balanceOf(from);
+    // console.log("from balance: ", Number(ethers.utils.formatEther(balance, {commify: true})).toLocaleString());
 
     balance = await contract.balanceOf(to);
-    console.log("to balance: ", Number(ethers.utils.formatEther(balance, {commify: true})).toLocaleString());
+    // console.log("to balance: ", Number(ethers.utils.formatEther(balance, {commify: true})).toLocaleString());
+    console.log(`Sent ${amountString} C50 to ${to}, your balance=${Number(ethers.utils.formatEther(fromBalance, {commify: true})).toLocaleString()} C50`);
     
 })();
